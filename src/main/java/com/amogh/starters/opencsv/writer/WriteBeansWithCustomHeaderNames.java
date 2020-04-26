@@ -27,11 +27,11 @@ public class WriteBeansWithCustomHeaderNames {
 
         Writer writer = new FileWriter("outputfiles/outputfile_using_beans_with_custom_header_names.csv");
 
-        // build mapping strategy with column order
+        // build mapping strategy with custom column headers
         String[] customHeaderNames = new String[]{"First Name - Custom", "Middle Name - Custom", "Last name - Custom", "Date Of Birth - Custom", "Nationality - Custom"};
         CustomCsvBindByPosition<PersonWithOrder> mappingStrategy = new CustomCsvBindByPosition<>(customHeaderNames);
         mappingStrategy.setType(PersonWithOrder.class);
-        String[] columnMapping = mappingStrategy.getColumnMapping();
+
         // create bean to CSV using the above mapping strategy
         StatefulBeanToCsv<PersonWithOrder> beanToCsv = new StatefulBeanToCsvBuilder<PersonWithOrder>(writer)
                 .withMappingStrategy(mappingStrategy)
